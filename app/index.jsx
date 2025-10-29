@@ -1,12 +1,11 @@
 import { StyleSheet, Text } from "react-native";
-import Logo from "../assets/img/logo_light.png";
 import { Link } from "expo-router";
 
 //themed components
 import ThemedView from "../components/ThemedView";
 import ThemedLogo from "../components/ThemedLogo";
-import Spacer from "../components/spacer";
 import ThemedText from "../components/ThemedText";
+import Spacer from "../components/Spacer";
 
 const Home = () => {
   return (
@@ -24,12 +23,12 @@ const Home = () => {
 
       <Spacer />
 
-      <Link href="/about" style={styles.link}>
-       <ThemedText> About Page </ThemedText>
+      <Link href="/login" style={styles.link}>
+       <ThemedText> Login Page </ThemedText>
       </Link>
 
-      <Link href="/contact" style={styles.link}>
-        <ThemedText>Contact Page</ThemedText>
+      <Link href="/register" style={styles.link}>
+        <ThemedText>Register Page</ThemedText>
       </Link>
 
     </ThemedView>
