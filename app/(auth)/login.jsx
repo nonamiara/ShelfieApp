@@ -21,7 +21,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null)
 
-  const { login } = useUser;
+  const { login } = useUser();
 
   const handleSubmit = async () => {
     setError(null)

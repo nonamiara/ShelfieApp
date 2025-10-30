@@ -15,7 +15,7 @@ const Register = () => {
   const [password, setPassword] = useState("")
   const [error, setError] = useState(null)
 
-  const {user, register } = useUser()
+  const { register } = useUser()
 
   const handleSubmit = async () => {
     setError(null)
