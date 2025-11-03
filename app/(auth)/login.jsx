@@ -3,7 +3,7 @@ import {
   Text,
   Keyboard,
   TouchableWithoutFeedback,
-  TextInput,
+ 
 } from "react-native";
 import { Link } from "expo-router";
 import { useState } from "react";
@@ -15,6 +15,7 @@ import ThemedText from "../../components/ThemedText";
 import Spacer from "../../components/Spacer";
 import ThemedButton from "../../components/ThemedButton";
 import ThemedTextInput from "../../components/ThemedTextInput";
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -72,6 +73,8 @@ const Login = () => {
             Register instead
           </ThemedText>
         </Link>
+
+        
       </ThemedView>
     </TouchableWithoutFeedback>
   );
