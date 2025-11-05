@@ -3,7 +3,6 @@ import {
   Text,
   Keyboard,
   TouchableWithoutFeedback,
- 
 } from "react-native";
 import { Link } from "expo-router";
 import { useState } from "react";
@@ -16,20 +15,19 @@ import Spacer from "../../components/Spacer";
 import ThemedButton from "../../components/ThemedButton";
 import ThemedTextInput from "../../components/ThemedTextInput";
 
-
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null);
 
   const { login } = useUser();
 
   const handleSubmit = async () => {
-    setError(null)
+    setError(null);
     try {
-      await login(email, password)
+      await login(email, password);
     } catch (error) {
-      setError(error.message)
+      setError(error.message);
     }
   };
 
@@ -73,8 +71,6 @@ const Login = () => {
             Register instead
           </ThemedText>
         </Link>
-
-        
       </ThemedView>
     </TouchableWithoutFeedback>
   );
@@ -96,10 +92,10 @@ const styles = StyleSheet.create({
   error: {
     color: Colors.warning,
     padding: 10,
-    backgroundColor: '#f5c1c8',
+    backgroundColor: "#f5c1c8",
     borderColor: Colors.warning,
     borderWidth: 1,
     borderRadius: 6,
     marginHorizontal: 10,
-  }
+  },
 });

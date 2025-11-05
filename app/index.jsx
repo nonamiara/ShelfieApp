@@ -24,7 +24,7 @@ const Home = () => {
       <Spacer />
 
       <Link href="/login" style={styles.link}>
-       <ThemedText> Login Page </ThemedText>
+        <ThemedText> Login Page </ThemedText>
       </Link>
 
       <Link href="/register" style={styles.link}>
@@ -34,7 +34,6 @@ const Home = () => {
       <Link href="/profile" style={styles.link}>
         <ThemedText>Profile Page</ThemedText>
       </Link>
-
     </ThemedView>
   );
 };

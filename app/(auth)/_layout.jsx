@@ -1,17 +1,15 @@
-import { Stack } from "expo-router"
-import { StatusBar } from "react-native"
-import { useUser } from "../../hooks/useUser"
-import GuestOnly from "../../components/auth/GuestOnly"
+import { Stack } from "expo-router";
+import { StatusBar } from "react-native";
+import { useUser } from "../../hooks/useUser";
+import GuestOnly from "../../components/auth/GuestOnly";
 
 export default function AuthLayout() {
-  const {user} = useUser()
-  console.log(user)
+  const { user } = useUser();
+  console.log(user);
   return (
     <GuestOnly>
       <StatusBar style="auto" />
-      <Stack 
-        screenOptions={{ animation: "none" }} 
-      />
+      <Stack screenOptions={{ animation: "none" }} />
     </GuestOnly>
-  )
+  );
 }

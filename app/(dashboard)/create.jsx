@@ -1,48 +1,52 @@
-import { StyleSheet, Text, TouchableWithoutFeedback, Keyboard } from 'react-native'
-import { useBooks } from "../../hooks/useBooks"
-import { useRouter } from 'expo-router'
-import { useState } from 'react'
+import {
+  StyleSheet,
+  Text,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from "react-native";
+import { useBooks } from "../../hooks/useBooks";
+import { useRouter } from "expo-router";
+import { useState } from "react";
 
 // themed components
-import ThemedView from "../../components/ThemedView"
-import ThemedText from "../../components/ThemedText"
-import ThemedTextInput from "../../components/ThemedTextInput"
-import ThemedButton from '../../components/ThemedButton'
-import Spacer from '../../components/Spacer'
+import ThemedView from "../../components/ThemedView";
+import ThemedText from "../../components/ThemedText";
+import ThemedTextInput from "../../components/ThemedTextInput";
+import ThemedButton from "../../components/ThemedButton";
+import Spacer from "../../components/Spacer";
 
 const Create = () => {
-  const [title, setTitle] = useState("")
-  const [author, setAuthor] = useState("")
-  const [description, setDescription] = useState("")
-  const [loading, setLoading] = useState(false)
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [description, setDescription] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const { createBook } = useBooks()
-  const router = useRouter()
+  const { createBook } = useBooks();
+  const router = useRouter();
 
   async function handleSubmit() {
-    if (!title.trim() || !author.trim() || !description.trim()) return
+    if (!title.trim() || !author.trim() || !description.trim()) return;
 
-    setLoading(true)
-    
+    setLoading(true);
+
     // create the book
-    await createBook({ title, author, description })
+    await createBook({ title, author, description });
 
     // reset fields
-    setTitle("")
-    setAuthor("")
-    setDescription("")
+    setTitle("");
+    setAuthor("");
+    setDescription("");
 
     // redirect
-    router.replace("/books")
+    router.replace("/books");
 
     // reset loading state
-    setLoading(false) 
+    setLoading(false);
   }
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}> 
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <ThemedView style={styles.container}>
-
         <ThemedText title={true} style={styles.heading}>
           Add a New Book
         </ThemedText>
@@ -74,17 +78,16 @@ const Create = () => {
         <Spacer />
 
         <ThemedButton onPress={handleSubmit} disabled={loading}>
-          <Text style={{ color: '#fff' }}>
+          <Text style={{ color: "#fff" }}>
             {loading ? "Saving..." : "Create Book"}
           </Text>
         </ThemedButton>
-
       </ThemedView>
     </TouchableWithoutFeedback>
-  )
-}
+  );
+};
 
-export default Create
+export default Create;
 
 const styles = StyleSheet.create({
   container: {
@@ -100,14 +103,14 @@ const styles = StyleSheet.create({
   input: {
     padding: 20,
     borderRadius: 6,
-    alignSelf: 'stretch',
+    alignSelf: "stretch",
     marginHorizontal: 40,
   },
   multiline: {
     padding: 20,
     borderRadius: 6,
     minHeight: 100,
-    alignSelf: 'stretch',
+    alignSelf: "stretch",
     marginHorizontal: 40,
   },
-}) 
+});
