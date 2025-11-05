@@ -16,6 +16,7 @@ export default function ThemedTextInput({ style, ...props }) {
         }, 
         style
       ]}
+       placeholderTextColor={theme.text}
       {...props}
     />
   )
