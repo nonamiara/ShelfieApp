@@ -1,11 +1,12 @@
-import { ActivityIndicator, useColorScheme } from "react-native";
+import { ActivityIndicator } from "react-native";
 import { Colors } from "../constants/Colors";
+import { useTheme } from "../components/ThemedContext";
 
 import ThemedView from "./ThemedView";
 
 const ThemedLoader = () => {
-  const colorScheme = useColorScheme();
-  const theme = Colors[colorScheme] ?? Colors.light;
+  const { theme } = useTheme();         // ✅ use ThemeContext
+  const themeColors = Colors[theme];    // ✅ get theme colors
 
   return (
     <ThemedView
@@ -15,7 +16,7 @@ const ThemedLoader = () => {
         alignItems: "center",
       }}
     >
-      <ActivityIndicator size="large" color={theme.text} />
+      <ActivityIndicator size="large" color={themeColors.text} />
     </ThemedView>
   );
 };

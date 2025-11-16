@@ -14,6 +14,7 @@ import ThemedText from "../../components/ThemedText";
 import Spacer from "../../components/Spacer";
 import ThemedButton from "../../components/ThemedButton";
 import ThemedTextInput from "../../components/ThemedTextInput";
+import { useTheme } from "../../components/ThemedContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -21,6 +22,8 @@ const Login = () => {
   const [error, setError] = useState(null);
 
   const { login } = useUser();
+  const { theme } = useTheme();
+  const themeColors = Colors[theme];
 
   const handleSubmit = async () => {
     setError(null);
@@ -35,11 +38,9 @@ const Login = () => {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <ThemedView style={styles.container}>
         <Spacer />
-        <ThemedText title={true} style={styles.title}>
+        <ThemedText title style={styles.title}>
           Login to Your Account
         </ThemedText>
-
-        {/* <TextInput placeholder="Email" /> */}
 
         <Spacer />
         <ThemedTextInput
@@ -48,6 +49,7 @@ const Login = () => {
           value={email}
           onChangeText={setEmail}
           keyboardType="email-address"
+          placeholderTextColor={themeColors.text}
         />
 
         <ThemedTextInput
@@ -56,14 +58,17 @@ const Login = () => {
           value={password}
           onChangeText={setPassword}
           secureTextEntry
+          placeholderTextColor={themeColors.text}
         />
 
-        <ThemedButton onPress={handleSubmit}>
-          <Text style={{ color: "#f2f2f2" }}>Login</Text>
-        </ThemedButton>
+        <ThemedButton onPress={handleSubmit}>Login</ThemedButton>
 
         <Spacer />
-        {error && <Text style={styles.error}>{error}</Text>}
+        {error && (
+          <Text style={[styles.error, { borderColor: themeColors.warning }]}>
+            {error}
+          </Text>
+        )}
 
         <Spacer height={100} />
         <Link href="/register" replace>
@@ -93,7 +98,6 @@ const styles = StyleSheet.create({
     color: Colors.warning,
     padding: 10,
     backgroundColor: "#f5c1c8",
-    borderColor: Colors.warning,
     borderWidth: 1,
     borderRadius: 6,
     marginHorizontal: 10,

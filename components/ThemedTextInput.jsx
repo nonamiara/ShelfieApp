@@ -1,22 +1,23 @@
-import { TextInput, useColorScheme } from "react-native";
+import { TextInput } from "react-native";
 import { Colors } from "../constants/Colors";
+import { useTheme } from "../components/ThemedContext";
 
 export default function ThemedTextInput({ style, ...props }) {
-  const colorScheme = useColorScheme();
-  const theme = Colors[colorScheme] ?? Colors.light;
+  const { theme } = useTheme();         // ✅ use ThemeContext
+  const themeColors = Colors[theme];    // ✅ get active theme colors
 
   return (
     <TextInput
       style={[
         {
-          backgroundColor: theme.uiBackground,
-          color: theme.text,
+          backgroundColor: themeColors.uiBackground,
+          color: themeColors.text,
           padding: 20,
           borderRadius: 6,
         },
         style,
       ]}
-      placeholderTextColor={theme.text}
+      placeholderTextColor={themeColors.text}
       {...props}
     />
   );

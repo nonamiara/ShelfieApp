@@ -1,11 +1,13 @@
-import { Text, useColorScheme } from "react-native";
+import { Text } from "react-native";
 import { Colors } from "../constants/Colors";
+import { useTheme } from "../components/ThemedContext";
 
 const ThemedText = ({ style, title = false, ...props }) => {
-  const colorScheme = useColorScheme();
-  const theme = Colors[colorScheme] ?? Colors.light;
+  const { theme } = useTheme();          // ✅ use ThemeContext
+  const themeColors = Colors[theme];     // ✅ get active theme colors
 
-  const textColor = title ? theme.title : theme.text;
+  // Title text uses theme.title, normal text uses theme.text
+  const textColor = title ? themeColors.title : themeColors.text;
 
   return <Text style={[{ color: textColor }, style]} {...props} />;
 };
