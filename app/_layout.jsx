@@ -16,7 +16,9 @@ const RootLayout = () => {
     <UserProvider>
       <BooksProvider>
         <StatusBar value="auto" />
+        
         <Stack
+        initialRouteName="index"
           screenOptions={{
             headerStyle: { backgroundColor: theme.navBackground },
             headerTintColor: theme.title,
